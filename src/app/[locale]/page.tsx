@@ -1,4 +1,5 @@
 import Button from './components/Button'
+import AffiliationCard from './components/Affilations'
 
 export default function DashboardPage() {
   return (
@@ -47,6 +48,9 @@ export default function DashboardPage() {
           </div>
         </div>
       </section> */}
+      <div >
+      <AffiliationCard />
+    </div>
     </div >
   )
 }

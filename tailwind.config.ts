@@ -35,7 +35,8 @@ const config = {
         selected: 'var(--selected)',
         dropdown: 'var(--dropdown)',
         dropdownHover: 'var(--dropdown-hover)',
-        buttonSecondary: 'var(--button-secondary)'
+        buttonSecondary: 'var(--button-secondary)',
+        
       },
 
       fontFamily: {
@@ -47,7 +48,7 @@ const config = {
       }
     }
   },
-  plugins: [require('tailwindcss-animate')]
+  plugins: [require('tailwindcss-animate'),require('daisyui')]
 } satisfies Config
 
 export default config
