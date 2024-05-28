@@ -35,7 +35,8 @@ const config = {
         selected: 'var(--selected)',
         dropdown: 'var(--dropdown)',
         dropdownHover: 'var(--dropdown-hover)',
-        buttonSecondary: 'var(--button-secondary)'
+        buttonSecondary: 'var(--button-secondary)',
+        
       },
 
       fontFamily: {
