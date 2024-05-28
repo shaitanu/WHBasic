@@ -1,4 +1,5 @@
 import Button from './components/Button'
+import AffiliationCard from './components/Affilations'
 
 export default function DashboardPage() {
   return (
@@ -47,6 +48,10 @@ export default function DashboardPage() {
           </div>
         </div>
       </section> */}
+      <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-6">Our Affiliations</h1>
+      <AffiliationCard />
+    </div>
     </div >
   )
 }
