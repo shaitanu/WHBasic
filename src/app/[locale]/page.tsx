@@ -17,8 +17,7 @@ export default function DashboardPage() {
         </div>
         <div className='mt-4 flex flex-row gap-4'>
           <a
-            href="/pitch.pdf"
-            target="_blank"
+            href="/"
             rel="noopener noreferrer">
             <Button rounded size='large' variant='secondary'>
               Learn More!

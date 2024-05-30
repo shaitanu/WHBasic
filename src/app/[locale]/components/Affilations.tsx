@@ -1,35 +1,100 @@
-// components/AffiliationCard.js
+"use client"
 import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Image from 'next/image';
+
 const affiliations = [
-  { id: 1, name: 'BITS Pilani Hyderabad Campus', description: 'We are a student-led initiative nurtured by the vibrant innovation ecosystem at BITS Pilani Hyderabad.', logo: '/images/bits_logo.png' },
-  { id: 2, name: 'SRM University Chennai', description: 'We are actively exploring collaborations with esteemed institutions like SRM University Chennai to bolster our technical expertise.', logo: '/images/srm_logo.png' },
-  { id: 3, name: 'TBI: BITS Hyderabad (Pre-incubation)', description: 'Eudaimonia is currently under pre-incubation at TBI, receiving valuable guidance and mentorship to refine our solutions.', logo: '/images/bits_logo.png'},
-  { id: 4, name: 'Affiliation 4', description: 'Description 4', logo: '/logo4.png' },
-  { id: 5, name: 'Affiliation 5', description: 'Description 5', logo: '/logo5.png' },
+  {
+    img: '/images/bits_logo.png',
+    title: 'BITS Pilani Hyderabad Campus',
+    description: 'We are a student-led initiative nurtured by the vibrant innovation ecosystem at BITS Pilani Hyderabad.',
+  },
+  {
+    img: '/images/srm_logo.png',
+    title: 'SRM University Chennai',
+    description: 'We are actively exploring collaborations with esteemed institutions like SRM University Chennai to bolster our technical expertise.',
+  },
+  {
+    img: '/images/tbi.png',
+    title: 'TBI: BITS Hyderabad (Pre-incubation)',
+    description: 'Eudaimonia is currently under pre-incubation at TBI, receiving valuable guidance and mentorship to refine our solutions.',
+  },
+  {
+    img: '/images/mfs.png',
+    title: 'Microsoft for Startups',
+    description: 'Eudaimonia is proud to be part of Microsoft for Startups, enhancing AI-based mental health solutions.'
+
+  },
+  // Add more affiliations as needed
 ];
 
-const AffiliationCard = () => {
+
+const AffiliationCard = ({ img, title, description }) => (
+  <div className="p-4 pb-8">
+    <div className="card w-full h-90 bg-white shadow-xl">
+      <figure className="px-10 pt-10">
+        <Image src={img} width={150} height={150} alt={title} className="rounded-xl" />
+      </figure>
+      <div className="card-body items-center text-center">
+        <h2 className="card-title">{title}</h2>
+        <p>{description}</p>
+      </div>
+    </div>
+  </div>
+);
+
+
+
+const AffiliationSlider = () => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <div className="bg-gray-100 py-10">
+    <div className="bg-gray-100 pt-10">
+      <h2 className="text-4xl font-bold mb-6 text-center text-gray-800">Our Affiliations</h2>
       <div className="container mx-auto">
-        <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">Our Affiliations</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {affiliations.slice(0, 3).map((affiliation) => (
-            <div key={affiliation.id} className="card w-full bg-white shadow-xl">
-              <figure className="px-10 pt-10">
-                <Image src={affiliation.logo} width={150} height={150} alt={affiliation.name} className="rounded-xl" />
-              </figure>
-              <div className="card-body items-center text-center">
-                <h2 className="card-title text-gray-800">{affiliation.name}</h2>
-                <p className="text-gray-600">{affiliation.description}</p>
-              </div>
-            </div>
+        <Slider {...settings} className="overflow-hidden">
+          {affiliations.map((affiliation, index) => (
+            <AffiliationCard
+              key={index}
+              img={affiliation.img}
+              title={affiliation.title}
+              description={affiliation.description}
+            />
           ))}
-        </div>
+        </Slider>
       </div>
     </div>
   );
 };
 
-export default AffiliationCard;
+export default AffiliationSlider;
