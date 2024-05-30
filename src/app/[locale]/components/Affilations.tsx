@@ -5,6 +5,13 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Image from 'next/image';
 
+interface AffiliationCardProps {
+  logo: string; // Assuming logo is a string representing the path to the image
+  title: string;
+  description: string;
+}
+
+
 const affiliations = [
   {
     img: '/images/bits_logo.png',
@@ -31,11 +38,12 @@ const affiliations = [
 ];
 
 
-const AffiliationCard = ({ img, title, description }) => (
+  const AffiliationCard: React.FC<AffiliationCardProps> = ({ logo, title, description }) => (
+
   <div className="p-4 pb-8">
     <div className="card w-full h-90 bg-white shadow-xl">
       <figure className="px-10 pt-10">
-        <Image src={img} width={150} height={150} alt={title} className="rounded-xl" />
+        <Image src={logo} width={150} height={150} alt={title} className="rounded-xl" />
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{title}</h2>
@@ -86,7 +94,7 @@ const AffiliationSlider = () => {
           {affiliations.map((affiliation, index) => (
             <AffiliationCard
               key={index}
-              img={affiliation.img}
+              logo={affiliation.img}
               title={affiliation.title}
               description={affiliation.description}
             />
